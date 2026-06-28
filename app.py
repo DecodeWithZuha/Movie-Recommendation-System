@@ -8,7 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 app = Flask(__name__)
 
-movies_data = pd.read_excel('/Users/apple/Desktop/chatbot/movies.xlsx')
+movies_data = pd.read_csv('movies.csv')
 
 movies_data.head()
 

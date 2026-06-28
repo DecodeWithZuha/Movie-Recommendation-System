@@ -28,11 +28,11 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 app = Flask(__name__)
 
-movies_data = pd.read_excel('/Users/apple/Desktop/chatbot/movies.xlsx')
+movies_data = pd.read_csv('movies.csv')
 
-movies_data.head() #prints first 5 rows of dataset
+#movies_data.head() #prints first 5 rows of dataset
 
-movies_data.shape # prints the total no. of rows and columns of dataset which is (4803, 24)
+#movies_data.shape # prints the total no. of rows and columns of dataset which is (4803, 24)
 
 #Feature /column selection for recommendation
 selected_features =['genres' , 'keywords', 'original_language' , 'original_title', 'production_companies',
@@ -79,15 +79,15 @@ list_of_all_titles = movies_data['title'].tolist()
 #to get best match we are using difflib
 
 find_close_match = difflib.get_close_matches(movie_name, list_of_all_titles)
-print(find_close_match)
+#print(find_close_match)
 
 # giving 3 for iron man but we need 1 so
 close_match = find_close_match[0]
-print(close_match)
+#print(close_match)
 
 #---------------------Finding Index of Movie------------------------
 index_of_movie = movies_data[movies_data.title == close_match]['index'].values[0]
-print(index_of_movie)
+#print(index_of_movie)
 
 #------Getting  A list of similar movies based on index no. --------
 similarity_score =  list(enumerate(similarity[index_of_movie])) # similar movies will have high similarity score.... enumerate is used to carry out a loop in a list
